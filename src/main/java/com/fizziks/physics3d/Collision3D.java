@@ -113,20 +113,6 @@ public class Collision3D {
       RigidBody3D boxBody, Collider3D boxCol,
       float restitution) {
 
-        /*
-    // Clamp sphere center to AABB surface
-    float closestX = clamp(sphereBody.position.x,
-        boxBody.position.x - boxCol.size.x,
-        boxBody.position.x + boxCol.size.x);
-    float closestY = clamp(sphereBody.position.y,
-        boxBody.position.y - boxCol.size.y,
-        boxBody.position.y + boxCol.size.y);
-    float closestZ = clamp(sphereBody.position.z,
-        boxBody.position.z - boxCol.size.z,
-        boxBody.position.z + boxCol.size.z);
-
-    Vector3f closestPoint = new Vector3f(closestX, closestY, closestZ);*/
-
     Vector3f closestPoint = new Vector3f(
       Math.max(boxBody.position.x - boxCol.size.x, Math.min(sphereBody.position.x, boxBody.position.x + boxCol.size.x)),
       Math.max(boxBody.position.y - boxCol.size.y, Math.min(sphereBody.position.y, boxBody.position.y + boxCol.size.y)),
