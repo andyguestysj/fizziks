@@ -154,9 +154,8 @@ public class Collision3D {
         if (vDotN < 0) {            
             Vector3f reflection = new Vector3f(normal).mul(-2f * vDotN);
             sphereBody.velocity.add(reflection).mul(restitution);
-            if (reflection.length() > 0.4f) {                
-              //if ((main.bounceSound != null)&&(main.bounceSound.isPlaying()== false))
-               // main.bounceSound.play();
+            if (reflection.length() > 0.4f) {                              
+               main.playBounce(sphereBody.position);
             }
         }
         

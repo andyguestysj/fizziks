@@ -105,7 +105,7 @@ public class Game3D {
 	private void loop() {
 		while (!glfwWindowShouldClose(window)) {
 
-			bounceSound.play(camera.position, walkerPosition);
+		//	bounceSound.play(camera.position, walkerPosition);
 
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			physics.update(0.016f);
@@ -146,6 +146,12 @@ public class Game3D {
 			walkerPosition.x = -14f;
 			walkerVelocity.x *= -1f;
 		}
+	}
+
+	public void playBounce(Vector3f ballPos){
+		if ((bounceSound != null))
+			bounceSound.stop();
+			bounceSound.play(camera.position, ballPos);
 	}
 
 	private void cleanup() {
