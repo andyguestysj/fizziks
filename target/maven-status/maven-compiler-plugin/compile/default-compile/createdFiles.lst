@@ -1,0 +1,9 @@
+com\fizziks\Game3D.class
+com\fizziks\Mesh.class
+com\fizziks\physics3d\Collider3D$Type.class
+com\fizziks\Camera.class
+com\fizziks\physics3d\Collision3D.class
+com\fizziks\physics3d\RigidBody3D.class
+com\fizziks\physics3d\PhysicsEngine3D.class
+com\fizziks\ShaderProgram.class
+com\fizziks\physics3d\Collider3D.class
