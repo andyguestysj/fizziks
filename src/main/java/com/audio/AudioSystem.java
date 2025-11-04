@@ -10,8 +10,6 @@ import org.lwjgl.system.MemoryUtil;
 public class AudioSystem {
   private long device;
   private long context;
-  private int bufferId;
-  private int sourceId;
 
   public void init() {
     device = ALC10.alcOpenDevice((CharSequence) null);
@@ -39,5 +37,12 @@ public class AudioSystem {
     AL10.alListener3f(AL10.AL_VELOCITY, 0f,0f,0f);
     AL10.alListener3f(AL10.AL_ORIENTATION, 0f,1f, 0f);
   }
+  
+  public long getDevice() {
+    return device;
+  }
 
+  public long getContext() {
+    return context;
+  }
 }

@@ -1,8 +1,6 @@
 package com.audio;
 
 import org.joml.Vector3f;
-import org.lwjgl.openal.AL10;
-import org.lwjgl.stb.STBVorbis;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
@@ -12,7 +10,6 @@ import java.nio.ShortBuffer;
 import static org.lwjgl.openal.AL10.*;
 import static org.lwjgl.stb.STBVorbis.*;
 import static org.lwjgl.system.MemoryStack.stackPush;
-import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Sound {
   private int bufferId;

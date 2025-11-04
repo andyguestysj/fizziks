@@ -155,7 +155,7 @@ public class Collision3D {
             Vector3f reflection = new Vector3f(normal).mul(-2f * vDotN);
             sphereBody.velocity.add(reflection).mul(restitution);
             if (reflection.length() > 0.4f) {                              
-               main.playBounce(sphereBody.position);
+              main.playBounce(sphereBody.position);
             }
         }
         

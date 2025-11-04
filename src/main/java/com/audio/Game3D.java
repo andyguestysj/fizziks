@@ -11,6 +11,12 @@ import java.nio.file.*;
 import java.io.IOException;
 
 import static org.lwjgl.glfw.GLFW.*;
+import static org.lwjgl.opengl.GL11C.GL_COLOR_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11C.GL_DEPTH_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11C.GL_DEPTH_TEST;
+import static org.lwjgl.opengl.GL11C.glClear;
+import static org.lwjgl.opengl.GL11C.glClearColor;
+import static org.lwjgl.opengl.GL11C.glEnable;
 import static org.lwjgl.opengl.GL33C.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
@@ -29,6 +35,7 @@ public class Game3D {
 	public AudioSystem audio = new AudioSystem();
 	public Sound bounceSound;
 	public Sound footstepsSound;
+	public MusicStreamer backgroundMusic;
 
 	public void run() {
 		physics = new PhysicsEngine3D(this);
@@ -76,8 +83,12 @@ public class Game3D {
 		setupScene();
 
 		audio.init();
-		bounceSound = new Sound("assets/sounds/boing.ogg");
-		footstepsSound = new Sound("assets/sounds/footsteps.ogg");
+		bounceSound = new Sound("assets/sounds/boing.ogg");		
+
+		backgroundMusic = new MusicStreamer();
+		backgroundMusic.init(audio, "assets/music/music.ogg");
+		backgroundMusic.setLooping(false);           // true = loop
+//		backgroundMusic.playAsync();
 
 	}
 
@@ -105,7 +116,8 @@ public class Game3D {
 	private void loop() {
 		while (!glfwWindowShouldClose(window)) {
 
-		//	bounceSound.play(camera.position, walkerPosition);
+			// 3d walker boing
+			//bounceSound.play(camera.position, walkerPosition);
 
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			physics.update(0.016f);
@@ -155,7 +167,7 @@ public class Game3D {
 	}
 
 	private void cleanup() {
-		footstepsSound.stop();
+		backgroundMusic.cleanup();		
 		bounceSound.cleanup();
 		footstepsSound.cleanup();
 		audio.destroy();		
